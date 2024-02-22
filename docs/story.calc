@@ -1,0 +1,16 @@
+task_exceed := sum(story.subtasks.exceed);
+task_count := count(story.subtasks);
+task_avg_exceed := $task_exceed / $task_count;
+story_exceed := [
+    ($task_count == 1): 10,
+    ($task_count == 10): 100,
+    $task_exceed
+];
+
+export story{
+    task_exceed: 任务超时,
+    task_count: 任务总数,
+    task_avg_exceed: 任务平均超时,
+    story_exceed: 需求超时
+};
+

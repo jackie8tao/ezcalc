@@ -1,0 +1,28 @@
+stmt = (expr_stmt | export_stmt), ';';
+expr_stmt = field_name, ':=', (calc_expr | condition_expr | ref_expr | call_expr);
+export_stmt = 'export', ' ', collection_name, '{', {export_field_label, ','}, export_field_label, '}';
+export_field_label =  field_name, ':', field_display_name;
+ref_expr = '$', field_name;
+condition_expr = '[', {condition_option, ','}, calc_expr, ']';
+condition_option = '(', ref_expr, compare_operator, (digit | ref_expr), ')', ':', number;
+call_expr = ident, '(', collection_ref, ')';
+collection_ref = ident, {'.', ident};
+calc_expr = calc_elem, {calc_operator, calc_expr};
+calc_elem = number | ref_expr | call_expr;
+calc_operator = '+' | '-' | '*' | '/' | '%';
+compare_operator = '==' | '>=' | '<=' | '!=' |
+    '>' | '<';
+field_name = letter, {letter | '_' | digit};
+ident = letter, {letter | digit};
+field_display_name = ;
+collection_name = letter, {letter};
+letter = "A" | "B" | "C" | "D" | "E" | "F" | "G"
+       | "H" | "I" | "J" | "K" | "L" | "M" | "N"
+       | "O" | "P" | "Q" | "R" | "S" | "T" | "U"
+       | "V" | "W" | "X" | "Y" | "Z" | "a" | "b"
+       | "c" | "d" | "e" | "f" | "g" | "h" | "i"
+       | "j" | "k" | "l" | "m" | "n" | "o" | "p"
+       | "q" | "r" | "s" | "t" | "u" | "v" | "w"
+       | "x" | "y" | "z" ;
+number = digit, {digit}, ['.' digit, {digit}];
+digit = "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" ;
