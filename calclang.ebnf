@@ -14,7 +14,7 @@ compare_operator = '==' | '>=' | '<=' | '!=' |
     '>' | '<';
 field_name = letter, {letter | '_' | digit};
 ident = letter, {letter | digit};
-field_display_name = ;
+field_display_name = {(\u4E00-\u9FFF)};
 collection_name = letter, {letter};
 letter = "A" | "B" | "C" | "D" | "E" | "F" | "G"
        | "H" | "I" | "J" | "K" | "L" | "M" | "N"
@@ -24,5 +24,5 @@ letter = "A" | "B" | "C" | "D" | "E" | "F" | "G"
        | "j" | "k" | "l" | "m" | "n" | "o" | "p"
        | "q" | "r" | "s" | "t" | "u" | "v" | "w"
        | "x" | "y" | "z" ;
-number = digit, {digit}, ['.' digit, {digit}];
+number = ['+' | '-'], digit, {digit}, ['.' digit, {digit}];
 digit = "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" ;
