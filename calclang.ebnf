@@ -1,3 +1,4 @@
+block = {stmt};
 stmt = (expr_stmt | export_stmt), ';';
 expr_stmt = field_name, ':=', (calc_expr | condition_expr | ref_expr | call_expr);
 export_stmt = 'export', ' ', collection_name, '{', {export_field_label, ','}, export_field_label, '}';
